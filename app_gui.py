@@ -1,7 +1,5 @@
 from Sudoku_GUI import SudokuGame
 import tkinter as tk
-
-
 def main():
     root = tk.Tk()
     root.title("Sudoku Solver")
