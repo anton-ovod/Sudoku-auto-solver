@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4df9f8b2-abb2-4993-8dac-a81d3d3bba62" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sudoku.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sudoku_auto_solver.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sudoku_auto_solver.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sudoku_GUI.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_gui.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+    <list default="true" id="4df9f8b2-abb2-4993-8dac-a81d3d3bba62" name="Changes" comment="first console version">
+      <change afterPath="$PROJECT_DIR$/GUI/Button.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/Window.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/home_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +42,11 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\USER\PycharmProjects\sudoku_auto_solver\images" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="sudoku_auto_solver" />
@@ -81,6 +84,14 @@
       <option name="presentableId" value="Default" />
       <updated>1680104776167</updated>
     </task>
+    <task id="LOCAL-00001" summary="first console version">
+      <created>1680210979732</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680210979732</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,5 +104,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first console version" />
+    <option name="LAST_COMMIT_MESSAGE" value="first console version" />
   </component>
 </project>
