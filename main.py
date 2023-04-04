@@ -1,64 +1,55 @@
-# to display time required to solve
-from time import time
+# import exists to check if a last loaded file exists in the directory
+from os.path import exists
 
-# import numpy module for operations on puzzle matrices
+# import numpy module to load the laste loaded puzzle or the sample
 import numpy as np
+# import pygame module
+import pygame
 
-# import Sudoku class to solve the puzzle using Algorithm X
-from sudoku import Sudoku
+# import the main GUI for the program
+from GUI.Window import SudokuGUI
+
+# initialize the pygame runtime
+pygame.init()
+# set caption for game window
+pygame.display.set_caption('Sudoku Puzzles Solver')
+# load icon for game
+icon = pygame.image.load('images/game_logo.png')
+# set icon for the game
+pygame.display.set_icon(icon)
 
 
-def main():
-    """Driver method"""
+def main_game():
+    """main method to be called"""
 
-    # note start time
-    start = time()
-    # input the puzzle
-    matrix = np.array([[1, 0, 0, 0, 0, 7, 0, 9, 0],
-                       [0, 3, 0, 0, 2, 0, 0, 0, 8],
-                       [0, 0, 9, 6, 0, 0, 5, 0, 0],
-                       [0, 0, 5, 3, 0, 0, 9, 0, 0],
-                       [0, 1, 0, 0, 8, 0, 0, 0, 2],
-                       [6, 0, 0, 0, 0, 4, 0, 0, 0],
-                       [3, 0, 0, 0, 0, 0, 0, 1, 0],
-                       [0, 4, 0, 0, 0, 0, 0, 0, 7],
-                       [0, 0, 7, 0, 0, 0, 3, 0, 0]], dtype=int)
-    # num of rows in sub grid
-    num_rows_sub_grid = 3
-    # num of cols in sub grid
-    num_cols_sub_grid = 3
+    # infinite loop
+    while True:
+        # if last loaded puzzle exists
+        if exists('last_loaded.npy') and exists('last_loaded_dim.npy'):
+            # load the last loaded puzzle
+            mat = np.load('last_loaded.npy')
+            # load the last loaded dimensions
+            box_rows, box_cols = tuple(np.load('last_loaded_dim.npy'))
+        else:
+            # load the sample puzzle
+            mat = np.load('sample.npy')
+            # load the sample puzzle dimensions
+            box_rows, box_cols = (3, 3)
+        # creat an instance of the GUI for the game
+        sg = SudokuGUI(mat.copy(), box_rows, box_cols)
 
-    try:
-        # get solution_list from the class
-        solution_list = Sudoku(matrix.copy(), box_row=num_rows_sub_grid, box_col=num_cols_sub_grid).get_solution()
-        # get shape of the matrix
-        rows, cols = matrix.shape
-        # iterate through all the solutions
-        for sol_num, solution in enumerate(solution_list):
-            print("Solution Number {} \n".format(sol_num + 1))
-            # iterate through rows
-            for i in range(rows):
-                # if sub grid rows are over
-                if i % num_rows_sub_grid == 0 and i != 0:
-                    print('-' * (2 * (cols + num_rows_sub_grid - 1)))
-                # iterate through columns
-                for j in range(cols):
-                    # if sub grid columns are over
-                    if j % num_cols_sub_grid == 0 and j != 0:
-                        print(end=' | ')
-                    else:
-                        print(end=' ')
-                    # print solution element
-                    print(solution[i, j], end='')
-                # end row
-                print()
-            print("\n")
-        # time taken to solve
-        print("\nSolved in {} s".format(round(time() - start, 4)))
-    # Key Value Error raised if solution not possible
-    except Exception:
-        print("Solution does not exist, try with a different puzzle")
+        # initial value for the menu option
+        menu_val = 0
+        # run while the main_menu doesnt generate a valid option
+        while not menu_val:
+            menu_val = sg.main_menu()
+
+        # if play game option is selected
+        if menu_val == 1:
+            # play game while home button is not clicked
+            while sg.play_game():
+                pass
 
 
 if __name__ == '__main__':
-    main()
+    main_game()
