@@ -126,16 +126,11 @@ class Sudoku:
                     self.cover_column(rows, cols, (i, j, self.matrix[i, j]))
 
         # iterate through the solutions
-        for solution in self.solve(rows, cols, []):
-            # iterate through coordinates and there values
-            for (i, j, element) in solution:
-                # assign the values to the respective elements
-                self.matrix[i, j] = element
-            # append the solution to the list of solutions
-            solutions.append(self.matrix)
-            # reset the matrix to the initial matrix
-            self.matrix = self.init_matrix.copy()
-        # return the list of solutions
+        solution = list(self.solve(rows, cols, []).__next__())
+        for (i, j, element) in solution:
+            self.matrix[i, j] = element
+        solutions.append(self.matrix)
+        self.matrix = self.init_matrix.copy()
         return solutions
 
     @staticmethod

@@ -26,6 +26,8 @@ class Button:
         self.color = color
         # color of button when mouse hovers over it, it is 75% of the fill color
         self.hover_color = tuple(3 * (c // 4) for c in color)
+        # status of the button
+        self.pressed = False
         # radius of curvature of the button
         self.radius = 0.5
         # set text to be displayed on the button
@@ -41,7 +43,10 @@ class Button:
                            self.button_height)
 
         # check if current mouse position is over the button area
-        if self.under_mouse():
+        if self.under_mouse() and not self.pressed:
+            # set fill color
+            color = pygame.Color(*self.hover_color)
+        elif self.pressed:
             # set fill color
             color = pygame.Color(*self.hover_color)
         else:
@@ -114,3 +119,4 @@ class Button:
             return True
         # otherwise return false
         return False
+
