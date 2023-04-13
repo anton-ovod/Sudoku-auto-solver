@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4df9f8b2-abb2-4993-8dac-a81d3d3bba62" name="Changes" comment="GUI 2.0 ----&gt; need to be modified">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI/Button.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/Button.py" afterDir="false" />
+    <list default="true" id="4df9f8b2-abb2-4993-8dac-a81d3d3bba62" name="Changes" comment="GUI 3.0 ----&gt; almost best version, already working)">
       <change beforePath="$PROJECT_DIR$/GUI/Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/Window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sudoku.py" beforeDir="false" afterPath="$PROJECT_DIR$/sudoku.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681328651420</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="GUI 3.0 ----&gt; almost best version, already working)">
+      <created>1681421277591</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681421277591</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +194,7 @@
     <MESSAGE value="start to develop some GUI" />
     <MESSAGE value="GUI 1.0 ----&gt; need to be modified" />
     <MESSAGE value="GUI 2.0 ----&gt; need to be modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI 2.0 ----&gt; need to be modified" />
+    <MESSAGE value="GUI 3.0 ----&gt; almost best version, already working)" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI 3.0 ----&gt; almost best version, already working)" />
   </component>
 </project>

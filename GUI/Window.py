@@ -1,5 +1,6 @@
 # import environment variable from os
 import os
+import sys
 
 # import choice to choose between the empty cells
 from random import choice
@@ -134,7 +135,7 @@ class SudokuGUI:
         if event.type == pygame.QUIT:
             # if quit button is clicked, exit the game
             pygame.quit()
-            exit()
+            sys.exit()
 
         # if LEFT mouse button is clicked
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
@@ -238,7 +239,6 @@ class SudokuGUI:
                     self.locked_pos.append((box_j, box_i))
                     print(self.locked_pos)
 
-
         pygame.display.update()
         return True
 
@@ -330,7 +330,7 @@ class SudokuGUI:
             if event.type == pygame.QUIT:
                 # if quit button is clicked, exit the game
                 pygame.quit()
-                exit()
+                sys.exit()
 
         # display the play game button
         self.button_play_game.draw(self.window)
