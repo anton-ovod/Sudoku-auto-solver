@@ -4,9 +4,9 @@ from GUI.Window import SudokuGUI
 # initialize the pygame runtime
 pygame.init()
 # set caption for game window
-pygame.display.set_caption('Sudoku Puzzles Solver')
+pygame.display.set_caption("Sudoku Puzzles Solver")
 # load icon for game
-icon = pygame.image.load('images/game_logo.png')
+icon = pygame.image.load("images/game_logo.png")
 # set icon for the game
 pygame.display.set_icon(icon)
 
@@ -24,8 +24,7 @@ def main_game():
         if started:
             while sg.play_game():
                 pass
-        pygame.display.update()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main_game()

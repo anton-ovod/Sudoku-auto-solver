@@ -1,7 +1,11 @@
 # method for cartesian product
+import math
 from itertools import product
+
 # import respective object type for type hint specification
 from typing import Dict, List
+
+import numpy as np
 
 # import ndarray as type hint specification
 from numpy import ndarray
@@ -13,7 +17,7 @@ class Sudoku:
     def __init__(self, matrix: ndarray, box_row: int = 3, box_col: int = 3):
         """default initialization"""
 
-        # set the matrix 
+        # set the matrix
         self.matrix = matrix
         # save a copy of the initial matrix
         self.init_matrix = self.matrix.copy()
@@ -22,7 +26,7 @@ class Sudoku:
         # set the number of columns in the sub grid
         self.box_col = box_col
         # set the game size
-        self.N = self.box_row * self.box_col
+        self.N = int(self.box_row * self.box_col)
 
     def init_row_cols(self):
         """Initialize the rows and columns"""
@@ -31,8 +35,12 @@ class Sudoku:
         rows = dict()
         for (i, j, n) in product(range(self.N), range(self.N), range(1, self.N + 1)):
             b = (i // self.box_row) * self.box_row + (j // self.box_col)
-            rows[(i, j, n)] = [("row-col", (i, j)), ("row-num", (i, n)),
-                               ("col-num", (j, n)), ("box-num", (b, n))]
+            rows[(i, j, n)] = [
+                ("row-col", (i, j)),
+                ("row-num", (i, n)),
+                ("col-num", (j, n)),
+                ("box-num", (b, n)),
+            ]
 
         # cols for the exact cover problem
         columns = dict()
@@ -109,7 +117,7 @@ class Sudoku:
                         cols[col_row_col].add(row_col)
 
     def get_solution(self):
-        """ Returns list of possible solutios for the Problem"""
+        """Returns list of possible solutios for the Problem"""
 
         # initialize rows and columns
         rows, cols = self.init_row_cols()
@@ -118,25 +126,27 @@ class Sudoku:
 
         # for each row in puzzle matrix
         for i in range(self.N):
-            # for each column 
+            # for each column
             for j in range(self.N):
                 # if the value is not zero
                 if self.matrix[i, j] != 0:
                     # remove associated values from the solution space
                     self.cover_column(rows, cols, (i, j, self.matrix[i, j]))
 
-        # iterate through the solutions
-        solution = list(self.solve(rows, cols, []).__next__())
-        for (i, j, element) in solution:
-            self.matrix[i, j] = element
-        solutions.append(self.matrix)
-        self.matrix = self.init_matrix.copy()
-        return solutions
+                # iterate through the solutions
+        for solution in self.solve(rows, cols, []):
+            # iterate through coordinates and there values
+            for (i, j, element) in solution:
+                # assign the values to the respective elements
+                self.matrix[i, j] = element
+            # append the solution to the list of solutions
+            solutions.append(self.matrix)
+            return solutions[0]
 
     @staticmethod
-    def element_possible(matrix: ndarray, box_row: int, box_col: int, i: int, j: int):
+    def element_possible(matrix: ndarray, size: int, i: int, j: int):
         """Helper method to check if a value in the matrix is valid"""
-
+        box_row, box_col = int(math.sqrt(size)), int(math.sqrt(size))
         # backup the element in place
         element = matrix[i, j].copy()
         # reassign as 0
@@ -146,9 +156,11 @@ class Sudoku:
 
         not_found = True
         # if element exists in the same row or the same column or the same sub grid
-        if element in matrix[i, :] or \
-                element in matrix[:, j] or \
-                element in matrix[sub_r:sub_r + box_row, sub_c:sub_c + box_col]:
+        if (
+            element in matrix[i, :]
+            or element in matrix[:, j]
+            or element in matrix[sub_r : sub_r + box_row, sub_c : sub_c + box_col]
+        ):
             not_found = False
 
         # reassign the backup value

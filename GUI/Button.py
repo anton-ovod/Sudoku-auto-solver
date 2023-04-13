@@ -11,7 +11,15 @@ pygame.font.init()
 class Button:
     """Template class to implement a mouse-based button in pygame GUI"""
 
-    def __init__(self, x: int, y: int, button_width: int, button_height: int, color: Tuple, text: str):
+    def __init__(
+        self,
+        x: int,
+        y: int,
+        button_width: int,
+        button_height: int,
+        color: Tuple,
+        text: str,
+    ):
         """default initialization"""
 
         # central x-coordinate
@@ -37,10 +45,12 @@ class Button:
         """used to draw the button on a surface"""
 
         # create the outline rectangle for the button
-        rect = pygame.Rect(self.x - self.button_width // 2,
-                           self.y - self.button_height // 2,
-                           self.button_width,
-                           self.button_height)
+        rect = pygame.Rect(
+            self.x - self.button_width // 2,
+            self.y - self.button_height // 2,
+            self.button_width,
+            self.button_height,
+        )
 
         # check if current mouse position is over the button area
         if self.under_mouse() and not self.pressed:
@@ -69,7 +79,9 @@ class Button:
         # draw a circle on the circle surface
         pygame.draw.ellipse(circle, (0, 0, 0), circle.get_rect(), 0)
         # scale the circle
-        circle = pygame.transform.smoothscale(circle, [int(min(rect.size) * self.radius)] * 2)
+        circle = pygame.transform.smoothscale(
+            circle, [int(min(rect.size) * self.radius)] * 2
+        )
 
         # draw top-left circle on the rectangle surface
         radius = rectangle.blit(circle, (0, 0))
@@ -90,14 +102,15 @@ class Button:
         rectangle.fill((255, 255, 255, alpha), special_flags=pygame.BLEND_RGBA_MIN)
 
         # make label for the text
-        font = pygame.font.SysFont('comicsans', self.button_height // 2)
+        font = pygame.font.SysFont("comicsans", self.button_height // 2)
         label = font.render(self.text, 1, (0, 0, 0))
 
         # display the button the respective surface
         surface.blit(rectangle, pos)
         # display the text over the button
-        surface.blit(label, (self.x - label.get_width() // 2,
-                             self.y - label.get_height() // 2))
+        surface.blit(
+            label, (self.x - label.get_width() // 2, self.y - label.get_height() // 2)
+        )
 
     def clicked(self, event):
         """used to check if the button is clicked"""
@@ -113,10 +126,12 @@ class Button:
         # get the current coordinates of the mouse
         mouse_x, mouse_y = pygame.mouse.get_pos()
         # if mouse coordinates during the click are in the range of the button coordinate
-        if mouse_x in range(self.x - self.button_width // 2, self.x + self.button_width // 2) and \
-                mouse_y in range(self.y - self.button_height // 2, self.y + self.button_height // 2):
+        if mouse_x in range(
+            self.x - self.button_width // 2, self.x + self.button_width // 2
+        ) and mouse_y in range(
+            self.y - self.button_height // 2, self.y + self.button_height // 2
+        ):
             # return true
             return True
         # otherwise return false
         return False
-
