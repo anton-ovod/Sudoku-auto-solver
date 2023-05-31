@@ -46,10 +46,6 @@ python sudoku_solver.py
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the [GitHub repository](https://github.com/your-repository).
 
-## License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to use and modify the code for personal or commercial purposes.
-
 ## Acknowledgements
 
 This program was developed using the knowledge and techniques learned from various Python tutorials and resources. Special thanks to the Pygame community for creating a powerful library for building interactive applications.
