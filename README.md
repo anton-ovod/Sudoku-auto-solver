@@ -26,7 +26,7 @@ pip install pygame
 2. Run the following command to start the Sudoku solver:
 
 ```
-python sudoku_solver.py
+python main.py
 ```
 
 3. The Pygame window will open, displaying an empty Sudoku grid.
